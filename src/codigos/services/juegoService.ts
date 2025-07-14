@@ -17,27 +17,86 @@ export const filtrarConLogica = async (filtros: FiltroJuego) => {
         gte: precioMin ?? undefined,
         lte: precioMax ?? undefined,
       },
-      plataformas: plataforma ? { has: plataforma } : undefined,
+      plataformas: plataforma
+        ? {
+            some: {
+              nombre: plataforma,
+            },
+          }
+        : undefined,
+    },
+    include: {
+      categoria: true,
+      plataformas: true,
     },
   });
 };
 
-export const obtenerTodos = () => prisma.juego.findMany();
+export const obtenerTodos = () =>
+  prisma.juego.findMany({
+    include: {
+      categoria: true,
+      plataformas: true,
+    },
+  });
 
 export const obtenerPorId = (id: number) => {
-  return prisma.juego.findUnique({ where: { id } });
+  return prisma.juego.findUnique({
+    where: { id },
+    include: {
+      categoria: true,
+      plataformas: true,
+    },
+  });
 };
 
-export const crearJuego = (data: any) => {
-  return prisma.juego.create({ data });
+export const crearJuego = async (data: any) => {
+  const {
+    plataformaIds,
+    categoriaId,
+    ...juegoData
+  } = data;
+
+  return prisma.juego.create({
+    data: {
+      ...juegoData,
+      categoria: { connect: { id: categoriaId } },
+      plataformas: {
+        connect: plataformaIds.map((id: number) => ({ id }))
+      }
+    },
+    include: {
+      categoria: true,
+      plataformas: true
+    }
+  });
 };
 
 export const actualizarJuego = (id: number, data: any) => {
-  return prisma.juego.update({ where: { id }, data });
+  return prisma.juego.update({
+    where: { id },
+    data: {
+      ...data,
+      categoria: data.categoria
+        ? { connect: { nombre: data.categoria } }
+        : undefined,
+      plataformas: data.plataformas
+        ? {
+            set: data.plataformas.map((nombre: string) => ({ nombre })),
+          }
+        : undefined,
+    },
+    include: {
+      categoria: true,
+      plataformas: true,
+    },
+  });
 };
 
 export const eliminarJuego = (id: number) => {
-  return prisma.juego.delete({ where: { id } });
+  return prisma.juego.delete({
+    where: { id },
+  });
 };
 
 export const filtrarJuegos = async (
@@ -48,8 +107,18 @@ export const filtrarJuegos = async (
   return prisma.juego.findMany({
     where: {
       nombre: nombre ? { contains: nombre, mode: 'insensitive' } : undefined,
-      categoria: categoria ? categoria : undefined,
-      plataformas: plataforma ? { has: plataforma } : undefined,
+      categoria: categoria ? { nombre: categoria } : undefined,
+      plataformas: plataforma
+        ? {
+            some: {
+              nombre: plataforma,
+            },
+          }
+        : undefined,
+    },
+    include: {
+      categoria: true,
+      plataformas: true,
     },
   });
 };

@@ -1,490 +1,150 @@
-### Crear juego: Elden Ring
-POST http://localhost:3001/api/juegos
+#CATEGORIAS
+POST http://localhost:3001/api/categorias/multiples
 Content-Type: application/json
 
 {
-  "nombre": "Elden Ring",
-  "precio": 139.3,
+  "categorias": [
+    { "nombre": "Acción" },
+    { "nombre": "Aventura" },
+    { "nombre": "Deportes" },
+    { "nombre": "Terror" },
+    { "nombre": "Rol" },
+    { "nombre": "Carreras" },
+    { "nombre": "Simulación" },
+    { "nombre": "Estrategia" },
+    { "nombre": "Puzzle" },
+    { "nombre": "Multijugador" },
+    { "nombre": "RPG" }
+  ]
+}
+
+###PLATAFORMAS
+POST http://localhost:3001/api/plataformas/multiples
+Content-Type: application/json
+
+{
   "plataformas": [
-    "PS5",
-    "XBOX",
-    "PC"
-  ],
-  "categoria": "RPG",
-  "stock": 50,
-  "rating": 4.9,
-  "imagen": "http://localhost:3001/static/Juegos/EldenRing.png",
-  "descripcion": "Un épico RPG de acción en un mundo abierto.",
-  "descripcionLarga": "Levántate, Sinluz, y recorre las Tierras Intermedias para convertirte en un Señor de Elden.",
-  "trailerURL": "https://www.youtube.com/embed/E3Huy2cdih0",
-  "galeria": [
-    "http://localhost:3001/static/Juegos/EldenRing1.jpg",
-    "http://localhost:3001/static/Juegos/EldenRing2.jpg",
-    "http://localhost:3001/static/Juegos/EldenRing3.jpg",
-    "http://localhost:3001/static/Juegos/EldenRing4.jpg"
-  ],
-  "caracteristicas": [
-    "Exploración libre en mundo abierto",
-    "Desafiantes batallas contra jefes",
-    "Amplia personalización del personaje",
-    "Multijugador cooperativo y competitivo"
-  ],
-  "descuento" : 30,
-  "lanzamiento": "2022-02-25T00:00:00.000Z"
+    { "nombre": "PC" },
+    { "nombre": "PS5" },
+    { "nombre": "XBOX" },
+    { "nombre": "SWITCH" }
+  ]
 }
 
-### Crear juego: The Legend of Zelda: Tears of the Kingdom
-POST http://localhost:3001/api/juegos
+### Crear múltiples juegos masivamente
+POST http://localhost:3001/api/juegos/cargar/masivos
 Content-Type: application/json
 
-{
-  "nombre": "The Legend of Zelda: Tears of the Kingdom",
-  "precio": 249.0,
-  "plataformas": ["SWITCH"],
-  "categoria": "Aventura",
-  "stock": 30,
-  "rating": 5.0,
-  "imagen": "http://localhost:3001/static/Juegos/LoZTofk.jpg",
-  "descripcion": "Secuela que expande el mundo de Hyrule con nuevas mecánicas.",
-  "descripcionLarga": "Explora los cielos y la tierra de Hyrule con nuevas herramientas y poderes únicos.",
-  "trailerURL": "https://www.youtube.com/embed/uHGShqcAHlQ",
-  "galeria": [
-    "http://localhost:3001/static/Juegos/Zelda1.jpeg",
-    "http://localhost:3001/static/Juegos/Zelda2.jpeg",
-    "http://localhost:3001/static/Juegos/Zelda3.jpeg",
-    "http://localhost:3001/static/Juegos/Zelda4.jpeg"
-  ],
-  "caracteristicas": [
-    "Exploración vertical",
-    "Puzzles innovadores",
-    "Interacción ambiental",
-    "Narrativa inmersiva"
-  ],
-  "lanzamiento": "2023-05-12T00:00:00.000Z"
-}
+[
+  {
+    "nombre": "Elden Ring",
+    "precio": 139.3,
+    "plataformas": ["PS5", "XBOX", "PC"],
+    "categoria": "RPG",
+    "stock": 50,
+    "rating": 4.9,
+    "imagen": "http://localhost:3001/static/Juegos/EldenRing.png",
+    "descripcion": "Un épico RPG de acción en un mundo abierto.",
+    "descripcionLarga": "Levántate, Sinluz, y recorre las Tierras Intermedias para convertirte en un Señor de Elden.",
+    "trailerURL": "https://www.youtube.com/embed/E3Huy2cdih0",
+    "galeria": [
+      "http://localhost:3001/static/Juegos/EldenRing1.jpg",
+      "http://localhost:3001/static/Juegos/EldenRing2.jpg",
+      "http://localhost:3001/static/Juegos/EldenRing3.jpg",
+      "http://localhost:3001/static/Juegos/EldenRing4.jpg"
+    ],
+    "caracteristicas": [
+      "Exploración libre en mundo abierto",
+      "Desafiantes batallas contra jefes",
+      "Amplia personalización del personaje",
+      "Multijugador cooperativo y competitivo"
+    ],
+    "descuento": 30,
+    "lanzamiento": "2022-02-25T00:00:00.000Z"
+  },
+  {
+    "nombre": "The Legend of Zelda: Tears of the Kingdom",
+    "precio": 249.0,
+    "plataformas": ["SWITCH"],
+    "categoria": "Aventura",
+    "stock": 30,
+    "rating": 5.0,
+    "imagen": "http://localhost:3001/static/Juegos/LoZTofk.jpg",
+    "descripcion": "Secuela que expande el mundo de Hyrule con nuevas mecánicas.",
+    "descripcionLarga": "Explora los cielos y la tierra de Hyrule con nuevas herramientas y poderes únicos.",
+    "trailerURL": "https://www.youtube.com/embed/uHGShqcAHlQ",
+    "galeria": [
+      "http://localhost:3001/static/Juegos/Zelda1.jpeg",
+      "http://localhost:3001/static/Juegos/Zelda2.jpeg",
+      "http://localhost:3001/static/Juegos/Zelda3.jpeg",
+      "http://localhost:3001/static/Juegos/Zelda4.jpeg"
+    ],
+    "caracteristicas": [
+      "Exploración vertical",
+      "Puzzles innovadores",
+      "Interacción ambiental",
+      "Narrativa inmersiva"
+    ],
+    "lanzamiento": "2023-05-12T00:00:00.000Z"
+  },
+  {
+    "nombre": "Cyberpunk 2077",
+    "precio": 89.5,
+    "plataformas": ["PS5", "XBOX", "PC"],
+    "categoria": "RPG",
+    "stock": 35,
+    "rating": 4.5,
+    "imagen": "http://localhost:3001/static/Juegos/cyberpunk.avif",
+    "descripcion": "Un RPG futurista con combate en primera persona.",
+    "descripcionLarga": "Vive como un mercenario en una ciudad futurista dominada por megacorporaciones.",
+    "trailerURL": "https://www.youtube.com/embed/LembwKDo1Dk",
+    "galeria": [
+      "http://localhost:3001/static/Juegos/Cyberpunk1.jpg",
+      "http://localhost:3001/static/Juegos/Cyberpunk2.jpg",
+      "http://localhost:3001/static/Juegos/Cyberpunk3.jpg",
+      "http://localhost:3001/static/Juegos/Cyberpunk4.jpg"
+    ],
+    "caracteristicas": [
+      "Narrativa ramificada",
+      "Combate con armas y hacking",
+      "Customización de cuerpo y mente",
+      "Ciudad futurista inmersiva"
+    ],
+    "lanzamiento": "2020-12-10T00:00:00.000Z"
+  }
+]
 
-### Crear juego: Cyberpunk 2077
-POST http://localhost:3001/api/juegos
+### Registrar 10 usuarios a la vez
+POST http://localhost:3001/api/usuarios/registrar-multiples
 Content-Type: application/json
 
-{
-  "nombre": "Cyberpunk 2077",
-  "precio": 89.5,
-  "plataformas": ["PS5", "XBOX", "PC"],
-  "categoria": "RPG",
-  "stock": 35,
-  "rating": 4.5,
-  "imagen": "http://localhost:3001/static/Juegos/cyberpunk.avif",
-  "descripcion": "Un RPG futurista con combate en primera persona.",
-  "descripcionLarga": "Vive como un mercenario en una ciudad futurista dominada por megacorporaciones.",
-  "trailerURL": "https://www.youtube.com/embed/LembwKDo1Dk",
-  "galeria": [
-    "http://localhost:3001/static/Juegos/Cyberpunk1.jpg",
-    "http://localhost:3001/static/Juegos/Cyberpunk2.jpg",
-    "http://localhost:3001/static/Juegos/Cyberpunk3.jpg",
-    "http://localhost:3001/static/Juegos/Cyberpunk4.jpg"
-  ],
-  "caracteristicas": [
-    "Narrativa ramificada",
-    "Combate con armas y hacking",
-    "Customización de cuerpo y mente",
-    "Ciudad futurista inmersiva"
-  ],
-  "lanzamiento": "2020-12-10T00:00:00.000Z"
-}
+[
+  { "nickname": "user1", "correo": "user1@gmail.com", "contrasena": "123456", "pais": "Perú" },
+  { "nickname": "user2", "correo": "user2@gmail.com", "contrasena": "123456", "pais": "Perú" },
+  { "nickname": "user3", "correo": "user3@gmail.com", "contrasena": "123456", "pais": "Perú" },
+  { "nickname": "user4", "correo": "user4@gmail.com", "contrasena": "123456", "pais": "Perú" },
+  { "nickname": "user5", "correo": "user5@gmail.com", "contrasena": "123456", "pais": "Perú" },
+  { "nickname": "user6", "correo": "user6@gmail.com", "contrasena": "123456", "pais": "Perú" },
+  { "nickname": "user7", "correo": "user7@gmail.com", "contrasena": "123456", "pais": "Perú" },
+  { "nickname": "user8", "correo": "user8@gmail.com", "contrasena": "123456", "pais": "Perú" },
+  { "nickname": "user9", "correo": "user9@gmail.com", "contrasena": "123456", "pais": "Perú" },
+  { "nickname": "user10", "correo": "user10@gmail.com", "contrasena": "123456", "pais": "Perú" }
+]
 
-### Crear juego: God of War Ragnarök
-POST http://localhost:3001/api/juegos
+### Registrar 5 ventas al mismo tiempo
+POST http://localhost:3001/api/ventas/registrar-multiples
 Content-Type: application/json
 
-{
-  "nombre": "God of War Ragnarök",
-  "precio": 229.0,
-  "plataformas": ["PS5"],
-  "categoria": "Acción",
-  "stock": 40,
-  "rating": 4.9,
-  "imagen": "http://localhost:3001/static/Juegos/god-of-war.jpg",
-  "descripcion": "Acción épica con Kratos en la mitología nórdica.",
-  "descripcionLarga": "Viaja por los nueve reinos enfrentando desafíos y deidades nórdicas.",
-  "trailerURL": "https://www.youtube.com/embed/EE-4GvjKcfs",
-  "galeria": [
-    "http://localhost:3001/static/Juegos/GodOfWar1.jpg",
-    "http://localhost:3001/static/Juegos/GodOfWar2.jpg",
-    "http://localhost:3001/static/Juegos/GodOfWar3.jpg",
-    "http://localhost:3001/static/Juegos/GodOfWar4.jpg"
-  ],
-  "caracteristicas": [
-    "Narrativa cinemática",
-    "Combate con hacha y espadas",
-    "Relación padre-hijo",
-    "Viaje por múltiples mundos"
-  ],
-  "lanzamiento": "2022-11-09T00:00:00.000Z"
-}
+[
+  { "usuarioId": 1, "juegoId": 1, "clave": "ABC123", "total": 39.99 },
+  { "usuarioId": 1, "juegoId": 2, "clave": "DEF456", "total": 49.99 },
+  { "usuarioId": 2, "juegoId": 1, "clave": "GHI789", "total": 39.99 },
+  { "usuarioId": 2, "juegoId": 3, "clave": "JKL012", "total": 59.99 },
+  { "usuarioId": 3, "juegoId": 3, "clave": "MNO345", "total": 29.99 }
+]
 
-### Crear juego: Hogwarts Legacy
-POST http://localhost:3001/api/juegos
-Content-Type: application/json
 
-{
-  "nombre": "Hogwarts Legacy",
-  "precio": 219.0,
-  "plataformas": ["PS5", "XBOX", "PC", "SWITCH"],
-  "categoria": "RPG",
-  "stock": 45,
-  "rating": 4.7,
-  "imagen": "http://localhost:3001/static/Juegos/hogwartlegacy.jpeg",
-  "descripcion": "RPG de acción en el mundo mágico de Harry Potter.",
-  "descripcionLarga": "Descubre secretos mágicos, lanza hechizos y vive tu aventura en Hogwarts.",
-  "trailerURL": "https://www.youtube.com/embed/1O6Qstncpnc",
-  "galeria": [
-    "http://localhost:3001/static/Juegos/Hogwarts1.jpg",
-    "http://localhost:3001/static/Juegos/Hogwarts2.jpg",
-    "http://localhost:3001/static/Juegos/Hogwarts3.jpg",
-    "http://localhost:3001/static/Juegos/Hogwarts4.jpg"
-  ],
-  "caracteristicas": [
-    "Exploración libre en Hogwarts",
-    "Sistema de clases mágicas",
-    "Duelo de hechizos",
-    "Criaturas mágicas y pociones"
-  ],
-  "lanzamiento": "2023-02-10T00:00:00.000Z"
-}
 
-### Crear juego: Resident Evil 4 Remake
-POST http://localhost:3001/api/juegos
-Content-Type: application/json
-
-{
-  "nombre": "Resident Evil 4 Remake",
-  "precio": 199.0,
-  "plataformas": ["PS5", "XBOX", "PC"],
-  "categoria": "Terror",
-  "stock": 30,
-  "rating": 4.8,
-  "imagen": "http://localhost:3001/static/Juegos/ResidentEVIL4Remake.jpg",
-  "descripcion": "Remake de un clásico de terror y acción.",
-  "descripcionLarga": "Leon Kennedy viaja a un pueblo remoto para rescatar a la hija del presidente.",
-  "trailerURL": "https://www.youtube.com/embed/O75Ip4o1bs8",
-  "galeria": [
-    "http://localhost:3001/static/Juegos/ResidentEvil1.jpg",
-    "http://localhost:3001/static/Juegos/ResidentEvil2.jpg",
-    "http://localhost:3001/static/Juegos/ResidentEvil3.jpg",
-    "http://localhost:3001/static/Juegos/ResidentEvil4.jpg"
-  ],
-  "caracteristicas": [
-    "Terror de supervivencia",
-    "Nuevas mecánicas de combate",
-    "Gráficos actualizados",
-    "Atmósfera inmersiva"
-  ],
-  "descuento" : 20,
-  "lanzamiento": "2023-03-24T00:00:00.000Z"
-}
-
-### Crear juego: Starfield
-POST http://localhost:3001/api/juegos
-Content-Type: application/json
-
-{
-  "nombre": "Starfield",
-  "precio": 249.0,
-  "plataformas": ["XBOX", "PC"],
-  "categoria": "Exploración",
-  "stock": 33,
-  "rating": 4.3,
-  "imagen": "http://localhost:3001/static/Juegos/Starfield.webp",
-  "descripcion": "RPG espacial con exploración de cientos de planetas.",
-  "descripcionLarga": "Descubre tu destino entre las estrellas en una galaxia sin límites.",
-  "trailerURL": "https://www.youtube.com/embed/pYqyVpCV-3c",
-  "galeria": [
-    "http://localhost:3001/static/Juegos/Starfield1.jpg",
-    "http://localhost:3001/static/Juegos/Starfield2.jpg",
-    "http://localhost:3001/static/Juegos/Starfield3.jpg",
-    "http://localhost:3001/static/Juegos/Starfield4.jpg"
-  ],
-  "caracteristicas": [
-    "Exploración espacial",
-    "Creación de naves",
-    "Misiones dinámicas",
-    "Facciones y decisiones"
-  ],
-  "lanzamiento": "2023-09-06T00:00:00.000Z"
-}
-
-### Crear juego: Final Fantasy XVI
-POST http://localhost:3001/api/juegos
-Content-Type: application/json
-
-{
-  "nombre": "Final Fantasy XVI",
-  "precio": 239.0,
-  "plataformas": ["PS5"],
-  "categoria": "RPG",
-  "stock": 25,
-  "rating": 4.7,
-  "imagen": "http://localhost:3001/static/Juegos/Final-fantasy-XVI.png",
-  "descripcion": "Una nueva entrega de la saga con enfoque más maduro.",
-  "descripcionLarga": "Los destinos de clanes y Eikons colisionan en esta historia épica.",
-  "trailerURL": "https://www.youtube.com/embed/iaJ4VVFGIa8",
-  "galeria": [
-    "http://localhost:3001/static/Juegos/FFXVI1.jpg",
-    "http://localhost:3001/static/Juegos/FFXVI2.jpg",
-    "http://localhost:3001/static/Juegos/FFXVI3.jpg",
-    "http://localhost:3001/static/Juegos/FFXVI4.jpg"
-  ],
-  "caracteristicas": [
-    "Combate rápido",
-    "Poderes elementales de Eikons",
-    "Narrativa oscura",
-    "Gran trabajo de doblaje y cinemáticas"
-  ],
-  "descuento" : 10,
-  "lanzamiento": "2023-06-22T00:00:00.000Z"
-}
-
-### Crear juego: Minecraft
-POST http://localhost:3001/api/juegos
-Content-Type: application/json
-
-{
-  "nombre": "Minecraft",
-  "precio": 99.0,
-  "plataformas": ["PS5", "XBOX", "PC", "SWITCH"],
-  "categoria": "Sandbox",
-  "stock": 60,
-  "rating": 4.8,
-  "imagen": "http://localhost:3001/static/Juegos/Minecraft.png",
-  "descripcion": "El famoso juego de mundo abierto donde puedes construir y explorar infinitamente.",
-  "descripcionLarga": "Crea, explora y sobrevive en un mundo generado proceduralmente lleno de bloques. Juega en modo creativo o supervivencia con amigos.",
-  "trailerURL": "https://www.youtube.com/embed/MmB9b5njVbA",
-  "galeria": [
-    "http://localhost:3001/static/Juegos/Minecraft1.jpg",
-    "http://localhost:3001/static/Juegos/Minecraft2.jpg",
-    "http://localhost:3001/static/Juegos/Minecraft3.jpg",
-    "http://localhost:3001/static/Juegos/Minecraft4.jpg"
-  ],
-  "caracteristicas": [
-    "Mundo infinito generado proceduralmente",
-    "Modos creativo y supervivencia",
-    "Multijugador online",
-    "Actualizaciones constantes"
-  ],
-  "lanzamiento": "2011-11-18T00:00:00.000Z"
-}
-
-### Crear juego: Stellar Blade
-POST http://localhost:3001/api/juegos
-Content-Type: application/json
-
-{
-  "nombre": "Stellar Blade",
-  "precio": 229.0,
-  "plataformas": ["PS5"],
-  "categoria": "Acción",
-  "stock": 20,
-  "rating": 4.6,
-  "imagen": "http://localhost:3001/static/Juegos/StellarBlade.jpg",
-  "descripcion": "Un espectacular juego de acción con combates intensos y un mundo futurista.",
-  "descripcionLarga": "Controla a Eve en su misión para salvar a la humanidad de los NA:tives en este juego de acción con combates fluidos y un diseño visual impresionante.",
-  "trailerURL": "https://www.youtube.com/embed/DSznLWimMlU",
-  "galeria": [
-    "http://localhost:3001/static/Juegos/StellarBlade1.jpg",
-    "http://localhost:3001/static/Juegos/StellarBlade2.jpg",
-    "http://localhost:3001/static/Juegos/StellarBlade3.jpg",
-    "http://localhost:3001/static/Juegos/StellarBlade4.jpg"
-  ],
-  "caracteristicas": [
-    "Combate acción fluido",
-    "Diseño de personajes detallado",
-    "Mundo post-apocalíptico",
-    "Sistema de habilidades especiales"
-  ],
-  "lanzamiento": "2024-04-16T00:00:00.000Z"
-}
-
-### Crear juego: Expedition 33
-POST http://localhost:3001/api/juegos
-Content-Type: application/json
-
-{
-  "nombre": "Expedition 33",
-  "precio": 179.0,
-  "plataformas": ["PS5", "XBOX", "PC"],
-  "categoria": "RPG",
-  "stock": 18,
-  "rating": 4.2,
-  "imagen": "http://localhost:3001/static/Juegos/Expedition33.avif",
-  "descripcion": "Un juego por turnos en el somos la expedición 33.",
-  "descripcionLarga": "Una vez al año, la Peintresse se despierta y pinta un número en el Monolito. Un número maldito. Todas las personas de esa edad se convierten de pronto en humo, esfumándose en el aire.",
-  "trailerURL": "https://www.youtube.com/embed/o9KQ4rlymEQ",
-  "galeria": [
-    "http://localhost:3001/static/Juegos/Expedition1.jpg",
-    "http://localhost:3001/static/Juegos/Expedition2.jpg",
-    "http://localhost:3001/static/Juegos/Expedition3.jpg",
-    "http://localhost:3001/static/Juegos/Expedition4.jpg"
-  ],
-  "caracteristicas": [
-    "Historia psicológica",
-    "Gráficos atmosféricos",
-    "RPG por turnos"
-  ],
-  "descuento": 15,
-  "lanzamiento": "2025-04-24T00:00:00.000Z"
-}
-
-### Crear juego: Kingdom Hearts III
-POST http://localhost:3001/api/juegos
-Content-Type: application/json
-
-{
-  "nombre": "Kingdom Hearts III",
-  "precio": 239.0,
-  "plataformas": ["PS5", "PC"],
-  "categoria": "Aventura",
-  "stock": 22,
-  "rating": 4.7,
-  "imagen": "http://localhost:3001/static/Juegos/KingdomHearts.jpg",
-  "descripcion": "La continuación de la épica saga que combina Disney y Final Fantasy.",
-  "descripcionLarga": "Sora regresa en una nueva aventura a través de mundos nunca antes vistos, con nuevos personajes y un sistema de combate renovado.",
-  "trailerURL": "https://www.youtube.com/embed/zrunNL3xsUY",
-  "galeria": [
-    "http://localhost:3001/static/Juegos/KH1.jpg",
-    "http://localhost:3001/static/Juegos/KH2.jpg",
-    "http://localhost:3001/static/Juegos/KH3.jpg",
-    "http://localhost:3001/static/Juegos/KH4.jpg"
-  ],
-  "caracteristicas": [
-    "Mundos Disney y Final Fantasy",
-    "Sistema de combate mejorado",
-    "Historia emocionante",
-    "Nuevos personajes"
-  ],
-  "lanzamiento": "2019-01-29T00:00:00.000Z"
-}
-
-### Crear juego: Grand Theft Auto V
-POST http://localhost:3001/api/juegos
-Content-Type: application/json
-
-{
-  "nombre": "Grand Theft Auto V",
-  "precio": 149.0,
-  "plataformas": ["PS5", "XBOX", "PC"],
-  "categoria": "Mundo Abierto",
-  "stock": 35,
-  "rating": 4.9,
-  "imagen": "http://localhost:3001/static/Juegos/GTA5.jpg",
-  "descripcion": "El clásico juego de mundo abierto que redefine el género.",
-  "descripcionLarga": "Vive las historias entrelazadas de Michael, Franklin y Trevor en la ciudad de Los Santos, llena de actividades, misiones y caos.",
-  "trailerURL": "https://www.youtube.com/embed/QkkoHAzjnUs",
-  "galeria": [
-    "http://localhost:3001/static/Juegos/GTA1.jpg",
-    "http://localhost:3001/static/Juegos/GTA2.jpg",
-    "http://localhost:3001/static/Juegos/GTA3.jpg",
-    "http://localhost:3001/static/Juegos/GTA4.jpg"
-  ],
-  "caracteristicas": [
-    "Mundo abierto masivo",
-    "Tres protagonistas jugables",
-    "Multijugador online (GTA Online)",
-    "Gráficos mejorados para nueva generación"
-  ],
-  "lanzamiento": "2013-09-17T00:00:00.000Z"
-}
-
-### Crear juego: Resident Evil Village
-POST http://localhost:3001/api/juegos
-Content-Type: application/json
-
-{
-  "nombre": "Resident Evil Village",
-  "precio": 179.0,
-  "plataformas": ["PS5", "XBOX", "PC"],
-  "categoria": "Terror",
-  "stock": 20,
-  "rating": 4.6,
-  "imagen": "http://localhost:3001/static/Juegos/ResidentEvil8.jpg",
-  "descripcion": "La terrorífica continuación de la saga Resident Evil.",
-  "descripcionLarga": "Ethan Winters regresa en una nueva pesadilla llena de horrores sobrenaturales en un misterioso pueblo europeo.",
-  "trailerURL": "https://www.youtube.com/embed/arEdruKxrQ8",
-  "galeria": [
-    "http://localhost:3001/static/Juegos/RE8_1.jpg",
-    "http://localhost:3001/static/Juegos/RE8_2.jpg",
-    "http://localhost:3001/static/Juegos/RE8_3.jpg",
-    "http://localhost:3001/static/Juegos/RE8_4.jpg"
-  ],
-  "caracteristicas": [
-    "Terror en primera persona",
-    "Nuevos enemigos memorables",
-    "Arsenal de armas mejorado",
-    "Historia que continúa RE7"
-  ],
-  "descuento" : 25,
-  "lanzamiento": "2021-05-06T00:00:00.000Z"
-}
-
-### Crear juego: Dark Souls: Remastered
-POST http://localhost:3001/api/juegos
-Content-Type: application/json
-
-{
-  "nombre": "Dark Souls: Remastered",
-  "precio": 129.0,
-  "plataformas": ["PS5", "XBOX", "PC", "SWITCH"],
-  "categoria": "RPG",
-  "stock": 28,
-  "rating": 4.8,
-  "imagen": "http://localhost:3001/static/Juegos/DarkSouls.jpg",
-  "descripcion": "El clásico que definió un género, ahora remasterizado.",
-  "descripcionLarga": "Experimenta el difícil pero gratificante mundo de Lordran con gráficos mejorados y rendimiento optimizado.",
-  "trailerURL": "https://www.youtube.com/embed/KfjG9ZLGBHE",
-  "galeria": [
-    "http://localhost:3001/static/Juegos/DS1.jpg",
-    "http://localhost:3001/static/Juegos/DS2.jpg",
-    "http://localhost:3001/static/Juegos/DS3.jpg",
-    "http://localhost:3001/static/Juegos/DS4.jpg"
-  ],
-  "caracteristicas": [
-    "Dificultad desafiante pero justa",
-    "Diseño de niveles interconectados",
-    "Sistema de combate preciso",
-    "Gráficos y rendimiento mejorados"
-  ],
-  "lanzamiento": "2018-05-23T00:00:00.000Z"
-}
-
-### Crear juego: ARK: Survival Evolved
-POST http://localhost:3001/api/juegos
-Content-Type: application/json
-
-{
-  "nombre": "ARK: Survival Evolved",
-  "precio": 159.0,
-  "plataformas": ["PS5", "XBOX", "PC", "SWITCH"],
-  "categoria": "Supervivencia",
-  "stock": 26,
-  "rating": 4.3,
-  "imagen": "http://localhost:3001/static/Juegos/ARK.jpg",
-  "descripcion": "Supervive y domina en una isla llena de dinosaurios y criaturas prehistóricas.",
-  "descripcionLarga": "Caza, recolecta, construye bases y doma dinosaurios en este intenso juego de supervivencia en un mundo abierto prehistórico.",
-  "trailerURL": "https://www.youtube.com/embed/IMklgHkggrQ",
-  "galeria": [
-    "http://localhost:3001/static/Juegos/ARK1.jpg",
-    "http://localhost:3001/static/Juegos/ARK2.jpg",
-    "http://localhost:3001/static/Juegos/ARK3.jpg",
-    "http://localhost:3001/static/Juegos/ARK4.jpg"
-  ],
-  "caracteristicas": [
-    "Domesticación de dinosaurios",
-    "Construcción de bases complejas",
-    "Supervivencia en mundo abierto",
-    "Multijugador online"
-  ],
-  "lanzamiento": "2017-06-17T00:00:00.000Z"
-}
 
 ### Eliminar juegos
 DELETE http://localhost:3001/api/juegos

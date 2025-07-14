@@ -8,34 +8,54 @@ datasource db {
 }
 
 model Usuario {
-  id          Int     @id @default(autoincrement())
-  nickname    String  @unique
-  correo      String  @unique
-  contrasena  String
-  pais        String?
-  imagen      String?
-  tipo        String  @default("user")
-  verificado  Boolean @default(false)
-  token       String?
+  id         Int       @id @default(autoincrement())
+  nickname   String    @unique
+  correo     String    @unique
+  contrasena String
+  pais       String?
+  imagen     String?
+  tipo       String    @default("user")
+  verificado Boolean   @default(false)
+  token      String?
+
+  ventas     Venta[]
+}
+
+model Categoria {
+  id      Int     @id @default(autoincrement())
+  nombre  String  @unique
+  juegos  Juego[]
+}
+
+model Plataforma {
+  id      Int     @id @default(autoincrement())
+  nombre  String  @unique
+  juegos  Juego[]
 }
 
 model Juego {
-  id               Int           @id @default(autoincrement())
-  nombre           String
-  precio           Float
-  plataformas      String[]
-  categoria        String
-  stock            Int
-  rating           Float
-  imagen           String
-  descripcion      String
-  descripcionLarga String
-  trailerURL       String
-  galeria          String[]
-  caracteristicas  String[]
-  lanzamiento      DateTime
-  descuento         Int      @default(0)
-  comentarios      Comentario[]
+  id                Int           @id @default(autoincrement())
+  nombre            String
+  precio            Float
+  stock             Int
+  rating            Float
+  imagen            String
+  descripcion       String
+  descripcionLarga  String
+  trailerURL        String
+  galeria           String[]
+  caracteristicas   String[]
+  lanzamiento       DateTime
+  descuento         Int           @default(0)
+
+  // Relaciones
+  categoria         Categoria?    @relation(fields: [categoriaId], references: [id])
+  categoriaId       Int?
+
+  plataformas       Plataforma[]
+
+  comentarios       Comentario[]
+  ventas            Venta[]
 }
 
 model Comentario {
@@ -44,6 +64,27 @@ model Comentario {
   rating   Int
   text     String
   date     DateTime
-  juego    Juego    @relation(fields: [juegoId], references: [id])
   juegoId  Int
+
+  juego    Juego    @relation(fields: [juegoId], references: [id])
+}
+
+model Venta {
+  id         Int      @id @default(autoincrement())
+  usuarioId  Int
+  juegoId    Int
+  clave      String
+  fecha      DateTime @default(now())
+  total      Float
+
+  usuario    Usuario  @relation(fields: [usuarioId], references: [id])
+  juego      Juego    @relation(fields: [juegoId], references: [id])
+}
+
+model Noticia {
+  id           Int      @id @default(autoincrement())
+  titulo       String   @db.VarChar(100)
+  contenido    String   @db.Text
+  imagen       String?  @db.VarChar(255)
+  fecha        DateTime @default(now())
 }
